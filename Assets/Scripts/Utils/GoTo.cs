@@ -5,6 +5,13 @@ public class GoTo : MonoBehaviour {
 
 	public static string currentScene = "";
 
+
+	public static void LoadNewShop()
+	{
+		Application.LoadLevel ("new_shop");
+		currentScene = "new_shop";
+	}
+
 	public static void LoadMegaCity()
 	{
 		Application.LoadLevel ("main_game_megaCity");

@@ -17,7 +17,8 @@ public class StartMenu : MonoBehaviour {
 	{
 		AppSoundManager.Get ().PlaySfx (Sfx.Type.sfx_click);
 		loadScreen.SetActive (true);
-		GoTo.LoadMegaCity ();
+		//GoTo.LoadMegaCity ();
+		GoTo.LoadNewShop ();
 		StartCoroutine (showIntersential ());
 		AdMob_Manager.Instance.curTime = 0f;
 		AdMob_Manager.Instance.hideBanner ();
