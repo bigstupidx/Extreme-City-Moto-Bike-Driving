@@ -20,7 +20,7 @@ public class CarAI : MonoBehaviour {
 
 
 	private bool isRide = false;
-	Transform motik;
+	public static Transform motik;
 	BoxCollider collider;
 	void Start () 
 	{
@@ -30,11 +30,10 @@ public class CarAI : MonoBehaviour {
 		int count = spline.transform.childCount;
 		for (int i = 0; i<count; i++)
 			points.Add (spline.transform.GetChild(i));
-		motik = GameObject.Find ("Motorbike 1").transform;
+		//motik = BikeManager.instance.cam.target; //GameObject.Find ("Motorbike 1").transform;
 		collider = gameObject.GetComponent<BoxCollider> ();
 	}
-	
-	// Update is called once per frame
+
 	void FixedUpdate () 
 	{
 		//TODO: zamytit't ety wtyky, kogda ne pokazani knopki ne davat' ta4kam exat'
@@ -43,7 +42,8 @@ public class CarAI : MonoBehaviour {
 			isRide = buttons.activeSelf;
 			return;
 		}
-		if(Vector3.Distance(motik.position,transform.position) < 10f)
+
+		if(motik != null && Vector3.Distance(motik.position,transform.position) < 10f)
 		{
 			collider.enabled = true;
 		}

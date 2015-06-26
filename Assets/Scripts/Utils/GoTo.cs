@@ -8,8 +8,8 @@ public class GoTo : MonoBehaviour {
 
 	public static void LoadNewShop()
 	{
-		Application.LoadLevel ("new_shop");
-		currentScene = "new_shop";
+		Application.LoadLevel ("new_shop 1");
+		currentScene = "new_shop 1";
 	}
 
 	public static void LoadMegaCity()

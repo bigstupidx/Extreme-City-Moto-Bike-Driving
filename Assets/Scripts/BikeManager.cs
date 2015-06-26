@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class BikeManager : MonoBehaviour {
 
+	public static BikeManager instance;
 	public BikeCamera cam;
 	public Transform[] positionsWrapers;
 	public GameObject arrowUI;
@@ -26,6 +27,7 @@ public class BikeManager : MonoBehaviour {
 
 	void Awake()
 	{
+		instance = this;
 		data = GameData.Get ();
 		//TODO: remove this string if need to have different default bike on game start
 		//data.currentBike = 0;
@@ -140,6 +142,7 @@ public class BikeManager : MonoBehaviour {
 		BikeControl targetBike = bikesContols[data.currentBike];
 		cam.target = targetBike.transform;
 		cam.BikeScript = targetBike;
+		CarAI.motik = cam.target;
 		targetBike.transform.GetComponent<BikeGUI> ().enabled = true;
 		targetBike.gameObject.SetActive (true);
 		Transform[] positionView = {targetBike.transform.FindChild("Components").FindChild("ForestView").FindChild("View-2").transform/*,

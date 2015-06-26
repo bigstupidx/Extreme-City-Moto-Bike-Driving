@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ShopNew : MonoBehaviour {
 
+	public GameObject itmsObj;
 	public BikeCamera cam;
 	public GameObject[] bikes;
 	public UILabel bikeInfo;
@@ -185,11 +186,13 @@ public class ShopNew : MonoBehaviour {
 	{
 		isAction = false;
 		choisePopup.SetActive (false);
+		itmsObj.SetActive (true);
 	}
 	public void closeClosePopup()
 	{
 		isAction = false;
 		closePopup.SetActive (false);
+		itmsObj.SetActive (true);
 	}
 
 	public void menuClick()
@@ -197,6 +200,7 @@ public class ShopNew : MonoBehaviour {
 		if(isAction) return;
 		isAction = true;
 		closePopup.SetActive (true);
+		itmsObj.SetActive (false);
 	}
 	public void goMainMenu()
 	{
@@ -204,4 +208,10 @@ public class ShopNew : MonoBehaviour {
 		GoTo.LoadMenu ();
 	}
 
+	public void ChoiseBikeFromAll(GameObject obj)
+	{
+		itmsObj.SetActive (false);
+		curBike = System.Convert.ToInt32 (obj.name) - 1;
+		areaClick ();
+	}
 }
