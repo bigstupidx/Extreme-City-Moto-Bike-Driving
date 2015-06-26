@@ -38,13 +38,13 @@ public class ShopNew : MonoBehaviour {
 
 		data = GameData.Get ();
 		//curBike = data.currentBike;
-		curBike = getLastOpenedBike ();
-		cam.target = bikes [curBike].transform;
-		cashView.text = "Points: " + data.cash.ToString ();
-		bikeInfo.text = bikeNames [curBike];
-		chooseBike (curBike);
-		showStatistic (curBike);
-		showInfo ();
+//		curBike = getLastOpenedBike ();
+//		cam.target = bikes [curBike].transform;
+//		cashView.text = "Points: " + data.cash.ToString ();
+//		bikeInfo.text = bikeNames [curBike];
+//		chooseBike (curBike);
+//		showStatistic (curBike);
+//		showInfo ();
 	}
 
 	void Update()

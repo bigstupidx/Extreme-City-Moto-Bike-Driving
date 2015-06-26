@@ -117,8 +117,10 @@ public class BikeAnimation : MonoBehaviour
 
         RaycastHit hit;
 
+		var layerMask = (1 << LayerMask.NameToLayer("Ramps"));
+		layerMask = ~layerMask;
 
-        if (Physics.Raycast(eventPoint.position, dir, out hit, 1.0f) && BikeScript.speed > 50)
+        if (Physics.Raycast(eventPoint.position, dir, out hit, 1.0f, layerMask) && BikeScript.speed > 90)
         {
 			//TODO:rewrite if need to crash bike
             if (player.parent != null)
