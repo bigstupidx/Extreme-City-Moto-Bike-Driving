@@ -143,6 +143,7 @@ public class BikeManager : MonoBehaviour {
 		cam.target = targetBike.transform;
 		cam.BikeScript = targetBike;
 		CarAI.motik = cam.target;
+		targetBike.rigidbody.isKinematic = false;
 		targetBike.transform.GetComponent<BikeGUI> ().enabled = true;
 		targetBike.gameObject.SetActive (true);
 		Transform[] positionView = {targetBike.transform.FindChild("Components").FindChild("ForestView").FindChild("View-2").transform/*,

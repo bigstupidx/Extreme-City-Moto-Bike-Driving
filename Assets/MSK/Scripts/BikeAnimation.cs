@@ -121,18 +121,19 @@ public class BikeAnimation : MonoBehaviour
         if (Physics.Raycast(eventPoint.position, dir, out hit, 1.0f) && BikeScript.speed > 50)
         {
 			//TODO:rewrite if need to crash bike
-//            if (player.parent != null)
-//            {
-//                crashSound.audio.Play();
-//                player.parent = null;
-//            }
-//
-//
-//            DisableRagdoll(true);
-//            player.GetComponent<Animator>().enabled = false;
-//
-//            BikeScript.crash = true;
-//            timer = RestTime;
+            if (player.parent != null)
+            {
+				if(data.sfx)
+                	crashSound.audio.Play();
+                player.parent = null;
+            }
+
+
+            DisableRagdoll(true);
+            player.GetComponent<Animator>().enabled = false;
+
+            BikeScript.crash = true;
+            timer = RestTime;
         }
 
 
