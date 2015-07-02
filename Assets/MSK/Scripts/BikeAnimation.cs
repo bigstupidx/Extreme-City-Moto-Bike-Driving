@@ -117,12 +117,16 @@ public class BikeAnimation : MonoBehaviour
 
         RaycastHit hit;
 
-		var layerMask = (1 << LayerMask.NameToLayer("Ramps"));
-		layerMask = ~layerMask;
+		var layerMask = ~(1 << LayerMask.NameToLayer("Ramps"));
+		layerMask = ~(1 << LayerMask.NameToLayer("Bike"));
+		//layerMask = ~layerMask;
 
-        if (Physics.Raycast(eventPoint.position, dir, out hit, 1.0f, layerMask) && BikeScript.speed > 90)
+        if (Physics.Raycast(eventPoint.position, dir, out hit, 1.0f, layerMask) && BikeScript.speed > 60)
         {
 			//TODO:rewrite if need to crash bike
+			string l = LayerMask.LayerToName(hit.transform.gameObject.layer);
+			if(l == "Ramps" || l == "Bike")
+				goto azaza;
             if (player.parent != null)
             {
 				if(data.sfx)
@@ -130,7 +134,8 @@ public class BikeAnimation : MonoBehaviour
                 player.parent = null;
             }
 
-
+			//Debug.Log(hit.transform.name+" "+);
+			Game.instance.ShowFallDownMsg();
             DisableRagdoll(true);
             player.GetComponent<Animator>().enabled = false;
 
@@ -138,7 +143,7 @@ public class BikeAnimation : MonoBehaviour
             timer = RestTime;
         }
 
-
+		azaza:
 
         if (timer == 0.0f)
         {
@@ -153,7 +158,8 @@ public class BikeAnimation : MonoBehaviour
 
             BikeScript.crash = false;
 
-
+			if(Game.instance != null)
+				Game.instance.HideFallDownMsg();
 
         }
 

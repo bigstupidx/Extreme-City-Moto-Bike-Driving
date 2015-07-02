@@ -10,7 +10,7 @@ public class Game : MonoBehaviour {
 
 	public GameObject firstBike;
 	public GameObject secondBike;
-
+	public GameObject fallDownMessage;
 	public Material[] bikeMaterials;
 
 	public GameObject popup;
@@ -82,6 +82,7 @@ public class Game : MonoBehaviour {
 	};
 
 	public static bool isRunning;
+	public static Game instance;
 	private bool isHomeShow = false;
 	private float scale = 0f;
 
@@ -95,6 +96,7 @@ public class Game : MonoBehaviour {
 
 	void Awake()
 	{
+		instance = this;
 		data = GameData.Get ();
 	}
 
@@ -153,6 +155,17 @@ public class Game : MonoBehaviour {
 			else
 				GameObject.Find("BikeManager").GetComponent<BikeManager>().SetRotator(missionsObj.GetChild(i).GetComponent<ItemRotator>());
 		}
+	}
+
+	public void ShowFallDownMsg()
+	{
+		fallDownMessage.SetActive (true);
+	}
+
+	public void HideFallDownMsg()
+	{
+		if(fallDownMessage.activeSelf)
+			fallDownMessage.SetActive (false);
 	}
 
 	public void OnMissionShowClick()

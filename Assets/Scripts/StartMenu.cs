@@ -19,7 +19,7 @@ public class StartMenu : MonoBehaviour {
 		loadScreen.SetActive (true);
 		//GoTo.LoadMegaCity ();
 		GoTo.LoadNewShop ();
-		StartCoroutine (showIntersential ());
+		//StartCoroutine (showIntersential ());
 		AdMob_Manager.Instance.curTime = 0f;
 		AdMob_Manager.Instance.hideBanner ();
 		//GoTo.LoadEnvironmentChoose();

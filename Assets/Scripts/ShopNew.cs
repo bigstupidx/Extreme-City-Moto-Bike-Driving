@@ -132,6 +132,13 @@ public class ShopNew : MonoBehaviour {
 		}
 	}
 
+	IEnumerator showIntersential()
+	{
+		yield return new WaitForEndOfFrame ();
+		AdMob_Manager.Instance.showInterstitial ();
+		yield return null;
+	}
+
 	public void showBuyPopup()
 	{
 		isAction = true;
@@ -169,6 +176,7 @@ public class ShopNew : MonoBehaviour {
 		data.save ();
 		loadingScreen.SetActive (true);
 		GoTo.LoadMegaCity ();
+		StartCoroutine (showIntersential ());
 		//GoTo.LoadEnvironmentChoose ();
 	}
 
